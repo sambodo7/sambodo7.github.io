@@ -1,23 +1,31 @@
 <!DOCTYPE html>
 <html lang="en-GB">
   <head>
-  	<title>The Peoples Calculator</title>
+    <title>The Peoples Calculator</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/big.js/5.1.2/big.min.js"></script>
   </head>
   <body>
-  	<form>
-  		<label for="type">How fair do you want to split costs</label>
-  		<select name="type">
-  			<option>Communitist</option>
-  			<option>Socialist</option>
-  			<option>Capitalist</option>
-  		</select>
-  		<label for="cost">Total Joined household costs</label>
-  		<input type="text" name="cost" id="cost">
-  		<label for="wage1">Wage of person 1</label>
-  		<input type="text" name="wage1" id="wage1">
-  		<label for="wage2">Wage of person 2</label>
-  		<input type="text" name="wage2" id="wage2">
-  		<input type="submit" name="Submit">
-  	</form>
-	</body>
+    <section id="app">
+      <form v-on:submit="submit">
+        <label for="type">How fair do you want to split costs</label>
+        <select name="type" v-model="type">
+          <option value="3">Communitist</option>
+          <option value="2">Socialist</option>
+          <option value="1">Capitalist</option>
+        </select>
+        <label for="costs">Total Joined household costs</label>
+        <input type="text" name="costs" id="costs" v-model="costs">
+        <label for="wage1">Wage of person 1</label>
+        <input type="text" name="wage1" id="wage1" v-model="wage1">
+        <label for="wage2">Wage of person 2</label>
+        <input type="text" name="wage2" id="wage2" v-model="wage2">
+        <input type="submit" name="Submit">
+      </form>
+      <div v-for="message in output">
+          <p>{{message}}</p>
+      </div>
+    </section>
+  </body>
+  <script src="index.js"></script>
 </html>
